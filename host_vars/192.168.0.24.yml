@@ -1,0 +1,20 @@
+#---
+
+#ospf:
+ # rid: 2.2.2.2
+---
+
+ospf:
+  default-originate: false
+  rid: "2.2.2.2"
+  networks:
+    - network: 10.1.2.0/24
+      wildcard: "0.0.0.255"
+      area: 0
+    - network: 10.2.3.0/24
+      wildcard: "0.0.0.255"
+      area: 0
+    - network: 10.2.4.0/24
+      wildcard: "0.0.0.255"
+      area: 0
+

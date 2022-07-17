@@ -1,0 +1,34 @@
+---
+
+ospf_configure:
+  Cisco-IOS-XE-native:router:
+    Cisco-IOS-XE-ospf:ospf:
+    - id: 1
+      network:
+      - area: 51
+        ip: 1.1.1.1
+        mask: 0.0.0.0
+      - area: 0
+        ip: 10.0.0.0
+        mask: 0.0.0.255
+      - area: 0
+        ip: 192.168.50.0
+        mask: 0.0.0.255
+      router-id: 1.1.1.1
+local_loopback:
+  - name: Loopback1
+    desc: Sample Ansible config
+    ip_address: 1.1.1.1/32
+  - name: Loopback2
+    desc: Sample Ansible config
+    ip_address: 11.11.11.11/32
+
+    
+interfaces:
+  - name: GigabitEthernet1
+    ip_address: 192.168.0.203/24
+  - name: GigabitEthernet2
+    ip_address: 172.16.16.1/30
+  - name: GigabitEthernet3
+    ip_address: 10.99.99.9/30
+

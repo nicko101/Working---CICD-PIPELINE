@@ -4,6 +4,7 @@ pipeline {
     stage('Build') {
       steps {
         sh 'printenv | sort'
+        sh 'ansiblePlaybook installation: 'ansible', inventory: './bin/ansible', playbook: './jenkins_play1.yml'
         sh 'bash $WORKSPACE/Build/startnodes.sh'
       }
     }

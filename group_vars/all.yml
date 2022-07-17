@@ -1,3 +1,0 @@
-ansible_user: "nick"
-ansible_password: "cisco"
-ansible_network_os: ios

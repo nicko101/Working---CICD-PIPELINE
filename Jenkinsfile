@@ -4,7 +4,7 @@ pipeline {
     stage('Build') {
       steps {
         sh 'printenv | sort'
-        ansiblePlaybook installation: 'ansible', inventory: '.local/bin/ansible', playbook: '/home/oisin/auto-jenkins_v2/jenkins_play1.yml'
+        ansiblePlaybook credentialsId: '65b4d7fa-ff37-4a59-8978-ebd2eafe429f', disableHostKeyChecking: true, installation: 'ansible', inventory: '/home/oisin/.local/bin', playbook: '/home/oisin/auto-jenkins_v2.yml'
         sh 'bash $WORKSPACE/Build/startnodes.sh'
       }
     }

@@ -27,5 +27,5 @@
         - name: Enable OSPF Lo1
           ios_config:
             lines:          
-              - int lo1
+              - interface loopback 0
               - ip ospf 1 area 0

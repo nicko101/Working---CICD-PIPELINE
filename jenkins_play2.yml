@@ -29,4 +29,4 @@
             lines:          
               - interface loopback 0
               - no ip address
-              -  ip ospf 1 area 0
+              - ip ospf 1 area 0

@@ -3,7 +3,20 @@
       hosts: testers
       connection: local
       gather_facts: no
-      tasks:    
+      tasks:
+        - name: Set Interface IPs
+          with_items: "{{interfaces}}"
+          ios_l3_interface:
+            name: "{{item.name}}"
+            ipv4: "{{item.ip_address}}"
+    
+        - name: No shut
+          with_items: "{{interfaces}}"
+          ios_interface:
+            name: "{{item.name}}"
+            enabled: True
+            state: present
+    
         - name: Enable OSPF
           ios_config:
             lines:          

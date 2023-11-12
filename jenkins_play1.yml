@@ -1,6 +1,6 @@
 ---
     - name: Issue show commands
-      hosts: nodes
+      hosts: testers
       connection: local
       gather_facts: no
       tasks:

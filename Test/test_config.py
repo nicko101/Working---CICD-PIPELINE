@@ -11,7 +11,7 @@ logging.basicConfig(level=logging.DEBUG,
 headers = {"Accept": "application/yang-data+json",
            "Content-Type": "application/yang-data+json"}
 
-ip_address = ['192.168.0.201','192.168.0.202']
+ip_address = ['192.168.0.201', '192.168.0.202']
 base_url = "http://{}/restconf/data"
 find_routerid_url = 'Cisco-IOS-XE-ospf-oper:ospf-oper-data/ospf-state/ospf-instance'
 headers = {'Accept': 'application/yang-data+json',
@@ -23,9 +23,9 @@ def test_ospf():
         print(f"Starting with device {ip}")
         logging.info(f"Starting with device {ip}")
         url = f"https://{ip}/restconf/data/Cisco-IOS-XE-ospf-oper:ospf-oper-data/ospf-state/ospf-instance"
-        
+
         routerid_resp = requests.get(
-            url=url, auth=('nick', 'cisco'), headers=headers, verify=False)
+            url=url, auth=('cisco', 'cisco'), headers=headers, verify=False)
         logging.info(routerid_resp.status_code)
         logging.info(routerid_resp.text)
         router_id = json.loads(routerid_resp.text)[
@@ -34,7 +34,7 @@ def test_ospf():
         new_url = (
             f"{url}=address-family-ipv4,{router_id}/ospf-area=0/ospf-interface/")
         interfaces = requests.get(
-            url=new_url, headers=headers, auth=('nick', 'cisco'), verify=False).json()['Cisco-IOS-XE-ospf-oper:ospf-interface']
+            url=new_url, headers=headers, auth=('cisco', 'cisco'), verify=False).json()['Cisco-IOS-XE-ospf-oper:ospf-interface']
         ospf_state = False
         for interface in interfaces:
             if 'ospf-neighbor' in interface:
@@ -43,7 +43,7 @@ def test_ospf():
                     if nbr['state'] == 'ospf-nbr-full':
                         ospf_state = True
                         print(f"OSPF is up on {ip}")
-        #print(new_url)
+        # print(new_url)
         assert(ospf_state == True)
 
 

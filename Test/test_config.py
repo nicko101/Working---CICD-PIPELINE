@@ -34,7 +34,7 @@ def test_ospf():
         new_url = (
             f"{url}=address-family-ipv4,{router_id}/ospf-area=0/ospf-interface/")
         interfaces = requests.get(
-            url=new_url, headers=headers, auth=('cisco', 'cisco'), verify=False).json()['Cisco-IOS-XE-ospf-oper:ospf-interface']
+            url=new_url, headers=headers, auth=('nick', 'cisco'), verify=False).json()['Cisco-IOS-XE-ospf-oper:ospf-interface']
         ospf_state = False
         for interface in interfaces:
             if 'ospf-neighbor' in interface:

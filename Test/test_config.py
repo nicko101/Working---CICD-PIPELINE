@@ -25,7 +25,7 @@ def test_ospf():
         url = f"https://{ip}/restconf/data/Cisco-IOS-XE-ospf-oper:ospf-oper-data/ospf-state/ospf-instance"
 
         routerid_resp = requests.get(
-            url=url, auth=('cisco', 'cisco'), headers=headers, verify=False)
+            url=url, auth=('nick', 'cisco'), headers=headers, verify=False)
         logging.info(routerid_resp.status_code)
         logging.info(routerid_resp.text)
         router_id = json.loads(routerid_resp.text)[
